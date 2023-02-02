@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title layout:title- <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+        tailwind.config = {
+            plugins: [
+                require('@tailwindcss/forms')
+
+            ],
+            theme: {
+                container: {
+                    center: true,
+                    padding: {
+                        DEFAULT: '2rem',
+                        sm: '5rem',
+                        lg: '4rem',
+                        xl: '5rem',
+                        '2xl': '6rem',
+                    },
+                },
+                // 	screens: {
+                // 	  'tablet': '640px',
+                // 	  // => @media (min-width: 640px) { ... }
+
+                // 	  'laptop': '1524px',
+                // 	  // => @media (min-width: 1024px) { ... }
+
+                // 	  'desktop': '1280px',
+                // 	  // => @media (min-width: 1280px) { ... }
+                // 	},
+
+                fontFamily: {
+                    sans: ['Graphik', 'sans-serif'],
+                    serif: ['Merriweather', 'serif'],
+                },
+                extend: {
+                    spacing: {
+                        '8xl': '96rem',
+                        '9xl': '128rem',
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                    }
+                    ,
+                    extend: {
+                        transitionDelay: {
+                            '0': '0ms',
+                            '2000': '2000ms',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        @layer base {
+            body {
+                @apply font-sans;
+            }
+            h1 {
+                @apply mt-5 py-5 text-center text-2xl;
+            }
+            button{
+                @apply transition ease-in-out delay-100 duration-300  hover:opacity-80}
+        }
+        .container{
+            margin: auto;
+        }
+
+    </style>
+
+    pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Atta Blog</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+header
+<div layout:fragment="content">
+    <p>Body contents</p>
+</div>
+<div th:fragment="footer">
+    &copy; 2016 Footer
+</div>
+</body>
+</html>

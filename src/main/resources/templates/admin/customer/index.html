@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-widsẻachth, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+      tailwind.config = {
+        plugins: [require("@tailwindcss/forms")],
+        theme: {
+          container: {
+            center: true,
+            padding: {
+              DEFAULT: "2rem",
+              sm: "5rem",
+              lg: "4rem",
+              xl: "5rem",
+              "2xl": "6rem",
+            },
+          },
+          // 	screens: {
+          // 	  'tablet': '640px',
+          // 	  // => @media (min-width: 640px) { ... }
+
+          // 	  'laptop': '1524px',
+          // 	  // => @media (min-width: 1024px) { ... }
+
+          // 	  'desktop': '1280px',
+          // 	  // => @media (min-width: 1280px) { ... }
+          // 	},
+
+          fontFamily: {
+            sans: ["Graphik", "sans-serif"],
+            serif: ["Merriweather", "serif"],
+          },
+          extend: {
+            spacing: {
+              "8xl": "96rem",
+              "9xl": "128rem",
+            },
+            borderRadius: {
+              "4xl": "2rem",
+            },
+            extend: {
+              transitionDelay: {
+                0: "0ms",
+                2000: "2000ms",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      @layer base {
+        body {
+          @apply font-sans;
+        }
+        h1 {
+          @apply mt-5 py-5 text-center text-2xl;
+        }
+        button {
+          @apply transition ease-in-out delay-100 duration-300  hover:opacity-80;
+        }
+      }
+      .container {
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relative rounded-xl overflow-auto">
+      <div
+        class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+      >
+        <div class="w-full max-w-md space-y-8">
+          <div>
+            <img
+              class="mx-auto h-12 w-auto"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600"
+              alt="Your Company"
+            />
+            <h2
+              class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"
+            >
+              List Customer
+            </h2>
+          
+          </div>
+          <div>
+            <div
+
+                    class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+
+              <a th:href="@{/admin/customer/add}" class="block">Thêm</a>
+            </div>
+          </div>
+          <div>
+            <form th:action="@{/admin/customer/searchByCode}" method="get">
+              <div class="row">
+                  <div class="my-2">
+                    <label for="code" class="sr-only">Code</label>
+                    <input
+                            id="code"
+                            name="code"
+                            type="search"
+                            autocomplete="code"
+                            class="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                            placeholder="Search code"
+                    />
+                  </div>
+                <button
+                        type="submit"
+                        class="my-2 group relative flex w-full justify-center rounded-md border border-transparent bg-slate-800 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                  </span>
+                  Search
+                </button>
+
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="shadow-sm overflow-hidden my-8">
+        <table class="border-collapse table-auto w-full text-sm">
+          <thead>
+            <tr class="">
+              <th
+                class="border-b dark:border-slate-600 uppercase font-medium p-4 pl-8 pt-0 pb-3 text-black text-left"
+              >
+                Id
+              </th>
+              <th
+                class="border-b dark:border-slate-600 uppercase font-medium p-4 pt-0 pb-3 text-black text-left"
+              >
+                Code
+              </th>
+              <th
+                class="border-b dark:border-slate-600 uppercase font-medium p-4 pr-8 pt-0 pb-3 text-black text-left"
+              >
+                Name
+              </th>
+              <th
+                class="border-b dark:border-slate-600 uppercase font-medium p-4 pr-8 pt-0 pb-3 text-black text-left"
+              >
+                BirthDay
+              </th>
+              <th
+                class="border-b dark:border-slate-600 uppercase font-medium p-4 pr-8 pt-0 pb-3 text-black text-left"
+              >
+                Phone
+              </th>
+              <th
+                class="border-b dark:border-slate-600 uppercase font-medium p-4 pr-8 pt-0 pb-3 text-black text-left"
+              >
+                address
+              </th>
+              <th
+              class="border-b dark:border-slate-600 uppercase font-medium p-4 pr-8 pt-0 pb-3 text-black text-left"
+            >
+              password
+            </th>
+            </tr>
+          </thead>
+          <tbody class="bg-slate-800">
+
+
+            <tr th:each=" customerList: ${customerList}">
+              <td
+                class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-white"
+                th:text="${customerList.id}"
+              >
+              </td>
+              <td
+                class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-white"
+                th:text="${customerList.code}"
+
+              >
+                
+              </td>
+              <td
+                class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-white"
+                th:text="${customerList.name}"
+
+              >
+              
+              </td>
+              <td
+                class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-white"
+                th:text="${customerList.birthDay}"
+
+              >
+               
+              </td>
+              <td
+                class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-white"
+                th:text="${customerList.phone}"
+
+              >
+                
+              </td>
+              <td
+                class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-white"
+                th:text="${customerList.address}"
+              >
+              </td>
+              <td
+              class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-white"
+              th:text="${customerList.password}"
+            >
+            </td>
+
+              <td
+                      class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-white"
+
+              >
+                <a th:href="'/admin/customer/detail/'+${customerList.id}" class="underline"> Detail</a>
+
+              </td>
+              <td
+                      class="border-b border-slate-100 dark:border-slate-700 p-4 pr-8 text-white"
+
+
+              >
+                <a th:href="'/admin/customer/delete/'+${customerList.id}"  class="underline"> Delete</a>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
